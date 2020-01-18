@@ -2,33 +2,34 @@ package buc13Runner;
 
 import buc13.Person;
 import buc13.Pisica;
+import buc13Exception.CatCantCompileException;
 
 public class PersonRunner {
     public static void main(String[] args) {
-        Person gigel = new Person("gigel", 1882923823);
+        Pisica cat = new Pisica("cutzu", "geo");
 
-        String numeleLuiGigel = gigel.getNume();
+        Person owner = new Person("gigel",1234);
+        try{
+            cat.setProprietar(owner);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            Person defaultPerson = new Person("defaultName", 1);
+            try {
+                cat.setProprietar(defaultPerson);
+                System.out.println("Am setat un " + defaultPerson);
+            } catch (CatCantCompileException ex) {
+                ex.printStackTrace();
+            }
+        }
+        System.out.println(cat);
 
-        System.out.println(numeleLuiGigel);
-        System.out.println(gigel.nume);
-
-        long cnpReal = gigel.getCnp(true);
-        long cnpFaraPermisiune = gigel.getCnp(false);
-
-        System.out.println(cnpReal);
-        System.out.println(cnpFaraPermisiune);
-
-
-        //Pisica cutzu = new Pisica("cutzu", gigel.getNume());
-        String numePisica = "cutzu";
-        String numeProprietar = gigel.getNume();
-        Pisica cutzu = new Pisica(numePisica, numeProprietar);
-
-        Person myrobolantu = new Person("nicolae", 123123);
-
-        cutzu.setProprietar(myrobolantu);
-        cutzu.setProprietar(gigel);
-
-
+        try {
+            throw new Exception("Something stinks in Denmark");
+        } catch (NullPointerException npe){
+            System.out.println("s-a aruncat npe");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("Am prins mirosul din Danemarca");
+        }
     }
 }
