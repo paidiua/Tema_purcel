@@ -1,3 +1,4 @@
+/*
 package buc13;
 
 import org.junit.Assert;
@@ -30,3 +31,4 @@ public class PersonTest {
         Assert.assertEquals(expectedCnp, actualCnp);
     }
 }
+*/

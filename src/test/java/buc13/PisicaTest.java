@@ -1,3 +1,4 @@
+/*
 package buc13;
 
 import org.junit.Assert;
@@ -42,3 +43,4 @@ public class PisicaTest {
         Assert.assertEquals(expectedName, actualName);
     }
 }
+*/
